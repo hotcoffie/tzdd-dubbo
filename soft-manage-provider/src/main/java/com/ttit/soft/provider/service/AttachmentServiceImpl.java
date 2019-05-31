@@ -7,7 +7,7 @@ import com.ttit.common.Constant;
 import com.ttit.common.entity.Attachment;
 import com.ttit.common.exceptions.NotExistException;
 import com.ttit.common.exceptions.NotNullException;
-import com.ttit.soft.api.service.AttachmentDubboService;
+import com.ttit.soft.api.service.AttachmentService;
 import com.ttit.soft.provider.dao.AttachmentDao;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -24,10 +24,10 @@ import java.util.List;
  * Date: 2019/5/2414:10
  */
 
-@Service(interfaceClass = AttachmentDubboService.class)
+@Service(interfaceClass = AttachmentService.class)
 @Component
 @Slf4j
-public class AttachmentServiceImpl implements AttachmentDubboService {
+public class AttachmentServiceImpl implements AttachmentService {
     @Resource
     private AttachmentDao attachmentDao;
 

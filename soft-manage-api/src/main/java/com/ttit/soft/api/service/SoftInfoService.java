@@ -10,7 +10,7 @@ import com.ttit.soft.api.entity.SoftInfo;
  * @author 小谢
  * Date: 2019/5/2317:16
  */
-public interface SoftInfoDubboService {
+public interface SoftInfoService {
     SoftInfo add(String softType, Attachment attachment, String userId);
 
     SoftInfo del(String id);

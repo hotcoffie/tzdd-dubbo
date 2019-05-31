@@ -9,7 +9,7 @@ import com.ttit.common.exceptions.NotExistException;
 import com.ttit.common.exceptions.NotNullException;
 import com.ttit.common.utils.UuidUtils;
 import com.ttit.soft.api.entity.SoftInfo;
-import com.ttit.soft.api.service.SoftInfoDubboService;
+import com.ttit.soft.api.service.SoftInfoService;
 import com.ttit.soft.provider.dao.SoftInfoDao;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -26,10 +26,10 @@ import java.util.List;
  * @author 小谢
  * Date: 2019/5/2317:17
  */
-@Service(interfaceClass = SoftInfoDubboService.class)
+@Service(interfaceClass = SoftInfoService.class)
 @Component
 @Slf4j
-public class SoftInfoServiceImpl implements SoftInfoDubboService {
+public class SoftInfoServiceImpl implements SoftInfoService {
     @Resource
     private SoftInfoDao softInfoDao;
 

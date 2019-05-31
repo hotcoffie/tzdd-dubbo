@@ -15,6 +15,10 @@ public class Constant {
     public static final String DICT_SAVE_TYPE_REDIS = "redis";
 
     /**
+     * 默认的设备分组ID
+     */
+    public static final String GROUP_DEFAULT_ID = "1";
+    /**
      * 删除标识
      */
     public static final String IS_DEL = "1";

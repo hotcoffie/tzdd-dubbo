@@ -1,0 +1,32 @@
+package com.ttit.device.provider.dao;
+
+import com.ttit.device.api.entity.DeviceInfo;
+import com.ttit.device.api.vo.DeviceInfoVo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Description:设备信息
+ *
+ * @author 小谢
+ * Date: 2019/5/2114:09
+ */
+public interface DeviceInfoDao {
+    List<DeviceInfoVo> searchPage(@Param("groupId") String groupId, @Param("keyword") String keyword);
+
+    Integer add(DeviceInfo deviceInfo);
+
+    DeviceInfoVo findById(@Param("id") String id);
+
+    void del(@Param("id") String id);
+
+    void modify(DeviceInfo deviceInfo);
+
+    DeviceInfoVo findBySerialNum(@Param("serialNum") String serialNum);
+
+    Integer changeGroup(@Param("id") String id, @Param("groupId") String groupId);
+
+    void updateLogout(@Param("id") String id, @Param("deviceStatus") String deviceStatus, @Param("noticeTime") Date noticeTime);
+}

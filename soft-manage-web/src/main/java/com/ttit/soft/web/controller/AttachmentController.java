@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.ttit.common.entity.Attachment;
 import com.ttit.common.exceptions.BusinessException;
 import com.ttit.common.vo.ResultVo;
-import com.ttit.soft.api.service.AttachmentDubboService;
+import com.ttit.soft.api.service.AttachmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -31,8 +31,8 @@ import java.nio.charset.StandardCharsets;
 @Api(tags = "附件管理")
 public class AttachmentController {
 
-    @Reference(interfaceClass = AttachmentDubboService.class)
-    private AttachmentDubboService attachmentDubboService;
+    @Reference(interfaceClass = AttachmentService.class)
+    private AttachmentService attachmentDubboService;
 
     @GetMapping("page")
     @ApiOperation(value = "分页查询附件列表", notes = "")

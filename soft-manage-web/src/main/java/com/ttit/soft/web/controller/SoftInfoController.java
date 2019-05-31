@@ -7,8 +7,8 @@ import com.ttit.common.entity.Attachment;
 import com.ttit.common.utils.FileUploadUtils;
 import com.ttit.common.vo.ResultVo;
 import com.ttit.soft.api.entity.SoftInfo;
-import com.ttit.soft.api.service.AttachmentDubboService;
-import com.ttit.soft.api.service.SoftInfoDubboService;
+import com.ttit.soft.api.service.AttachmentService;
+import com.ttit.soft.api.service.SoftInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -28,11 +28,11 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 @Api(tags = "软件信息")
 public class SoftInfoController {
-    @Reference(interfaceClass = SoftInfoDubboService.class)
-    private SoftInfoDubboService softInfoDubboService;
+    @Reference(interfaceClass = SoftInfoService.class)
+    private SoftInfoService softInfoDubboService;
 
-    @Reference(interfaceClass = AttachmentDubboService.class)
-    private AttachmentDubboService attachmentDubboService;
+    @Reference(interfaceClass = AttachmentService.class)
+    private AttachmentService attachmentDubboService;
 
     /**
      * 文件上传路径

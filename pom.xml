@@ -20,6 +20,8 @@
         <module>soft-manage-api</module>
         <module>soft-manage-provider</module>
         <module>soft-manage-web</module>
+        <module>device-api</module>
+        <module>device-web</module>
     </modules>
 
     <properties>

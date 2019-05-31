@@ -1,0 +1,19 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttit.device.provider.dao.DictionaryDao">
+
+    <select id="listForDict" resultType="com.ttit.device.api.entity.Dictionary">
+        SELECT type, code, value
+        FROM sys_dictionary
+        WHERE is_del = '0'
+        ORDER BY order_num DESC
+    </select>
+    <select id="listByType" parameterType="string" resultType="com.ttit.device.api.entity.Dictionary">
+        SELECT *
+        FROM sys_dictionary
+        WHERE is_del = '0'
+        <if test="type!=null and type!=''">
+            AND type = #{type}
+        </if>
+        ORDER BY order_num DESC
+    </select>
+</mapper>

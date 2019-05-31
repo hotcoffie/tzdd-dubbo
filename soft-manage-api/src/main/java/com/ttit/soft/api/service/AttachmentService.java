@@ -9,7 +9,7 @@ import com.ttit.common.entity.Attachment;
  * @author 小谢
  * Date: 2019/5/2915:19
  */
-public interface AttachmentDubboService {
+public interface AttachmentService {
     PageInfo searchPage(String keyword, Integer pageNum, Integer pageSize, String orderBy);
 
     Attachment add(Attachment attachment);

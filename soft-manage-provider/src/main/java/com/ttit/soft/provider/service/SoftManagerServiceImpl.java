@@ -8,7 +8,7 @@ import com.ttit.common.exceptions.NotNullException;
 import com.ttit.common.utils.UuidUtils;
 import com.ttit.soft.api.entity.SoftInfo;
 import com.ttit.soft.api.entity.SoftManager;
-import com.ttit.soft.api.service.SoftManagerDubboService;
+import com.ttit.soft.api.service.SoftManagerService;
 import com.ttit.soft.api.vo.SoftManagerVo;
 import com.ttit.soft.provider.dao.SoftInfoDao;
 import com.ttit.soft.provider.dao.SoftManagerDao;
@@ -27,10 +27,10 @@ import java.util.stream.Collectors;
  * @author 小谢
  * Date: 2019/5/2415:24
  */
-@Service(interfaceClass = SoftManagerDubboService.class)
+@Service(interfaceClass = SoftManagerService.class)
 @Component
 @Slf4j
-public class SoftManagerServiceImpl implements SoftManagerDubboService {
+public class SoftManagerServiceImpl implements SoftManagerService {
     @Resource
     private SoftManagerDao softManagerDao;
     @Resource

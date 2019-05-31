@@ -1,0 +1,53 @@
+package com.ttit.device.api.service;
+
+import com.github.pagehelper.PageInfo;
+import com.ttit.device.api.entity.DeviceInfo;
+import com.ttit.device.api.vo.DevReportVo;
+import com.ttit.device.api.vo.DeviceInfoVo;
+
+/**
+ * Description:设备信息
+ *
+ * @author 小谢
+ * Date: 2019/5/2114:00
+ */
+public interface DeviceInfoService {
+    /**
+     * 分页查询设备信息列表
+     */
+    PageInfo searchPage(String groupId, String keyword, Integer pageNum, Integer pageSize, String orderBy);
+
+    /**
+     * 根据ID查询设备信息
+     */
+    DeviceInfoVo findById(String id);
+
+    /**
+     * 从设备列表中逻辑删除指定设备
+     */
+    DeviceInfoVo del(String id, String userId);
+
+    /**
+     * 注册新的设备
+     */
+    DeviceInfoVo regist(DeviceInfo deviceInfo, String userId);
+
+    /**
+     * 根据设备串号查询设备信息
+     */
+    DeviceInfoVo findBySerialNum(String devSerialNum);
+
+    /**
+     * 修改设备信息，只提供业主信息修改
+     */
+    DeviceInfoVo modify(DeviceInfo deviceInfo, String userId);
+
+    /**
+     * 修改设备分组信息
+     */
+    DeviceInfoVo modifyGroup(String id, String groupId, String userId);
+
+    void report(DevReportVo reportVo);
+
+    DeviceInfoVo legalize(String id, String serialNum, String serialCode);
+}

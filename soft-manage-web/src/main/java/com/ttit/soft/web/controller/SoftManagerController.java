@@ -4,7 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.ttit.common.Constant;
 import com.ttit.common.vo.ResultVo;
 import com.ttit.soft.api.entity.SoftManager;
-import com.ttit.soft.api.service.SoftManagerDubboService;
+import com.ttit.soft.api.service.SoftManagerService;
 import com.ttit.soft.api.vo.SoftManagerVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,8 +27,8 @@ import java.util.Map;
 @Api(tags = "软件管理")
 public class SoftManagerController {
 
-    @Reference(interfaceClass = SoftManagerDubboService.class)
-    private SoftManagerDubboService softManagerDubboService;
+    @Reference(interfaceClass = SoftManagerService.class)
+    private SoftManagerService softManagerDubboService;
 
     @GetMapping("list")
     @ApiOperation(value = "软件管理信息列表", notes = "")

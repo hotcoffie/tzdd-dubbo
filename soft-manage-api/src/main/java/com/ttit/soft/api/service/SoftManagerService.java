@@ -12,7 +12,7 @@ import java.util.Map;
  * @author 小谢
  * Date: 2019/5/2415:24
  */
-public interface SoftManagerDubboService {
+public interface SoftManagerService {
     List<SoftManagerVo> list();
 
     SoftManager add(SoftManager softManager, String userId);
