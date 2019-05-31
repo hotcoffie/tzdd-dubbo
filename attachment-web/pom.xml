@@ -7,11 +7,14 @@
         <groupId>com.ttit</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>attachment-provider</artifactId>
+    <artifactId>attachment-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>attachment-provider</name>
-    <description>附件服务</description>
-    <packaging>jar</packaging>
+    <name>attachment-web</name>
+    <description>附件管理</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -27,29 +30,7 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <!--数据库-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-
-        <!--缓存-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <!--附件协议-->
@@ -57,11 +38,6 @@
             <groupId>com.caucho</groupId>
             <artifactId>hessian</artifactId>
             <version>4.0.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty</artifactId>
-            <version>6.1.26</version>
         </dependency>
     </dependencies>
 
