@@ -1,0 +1,30 @@
+#公共配置与profiles选择无关
+server:
+  port: 9102
+spring:
+  application:
+    name: soft-manage-web
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 102400KB
+      # 一次请求文件大小
+      max-request-size: 102400KB
+  jackson:
+    default-property-inclusion: ALWAYS
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  dubbo:
+    application:
+      name: soft-manage-web
+    registry:
+      address: zookeeper://172.18.0.58:2181
+    protocol:
+      name: dubbo
+      port: 20881
+    consumer:
+      timeout: 5000
+business:
+  file-upload-path: E:\Projects\tzzd\softs\

@@ -12,22 +12,26 @@
     <artifactId>tzzd</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>tzzd</name>
-    <description>Demo project for Spring Boot</description>
+    <description>投注终端管理系统</description>
 
     <modules>
         <module>common</module>
-        <module>syslog-api</module>
-        <module>syslog-provider</module>
+        <module>soft-manage-api</module>
+        <module>soft-manage-provider</module>
+        <module>soft-manage-web</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <curator-framework.version>4.0.1</curator-framework.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>

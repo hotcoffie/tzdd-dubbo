@@ -1,0 +1,23 @@
+package com.ttit.soft.provider.dao;
+
+import com.ttit.soft.api.entity.SoftInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+/**
+ * Description:软件信息
+ *
+ * @author 小谢
+ * Date: 2019/5/2317:44
+ */
+public interface SoftInfoDao {
+
+    List<SoftInfo> searchPage(@Param("softType") String softType, @Param("keyword") String keyword);
+
+    SoftInfo findById(@Param("id") String id);
+
+    Integer add(SoftInfo softInfo);
+
+    Integer del(@Param("id") String id);
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttit.soft.provider.dao.SoftInfoDao">
+    <sql id="baseCols">
+        SELECT id,
+               dict_soft_type `softType`,
+               `name`,
+               url,
+               creator,
+               create_time,
+               is_del
+        FROM soft_info
+    </sql>
+    <select id="searchPage" parameterType="String" resultType="com.ttit.soft.api.entity.SoftInfo">
+        <include refid="baseCols"/>
+        <where>
+            is_del = '0'
+            <if test="softType!=null and softType!=''">
+                AND dict_soft_type = #{softType}
+            </if>
+            <if test="keyword!=null and keyword!=''">
+                <bind name="pattern" value="'%' + _parameter.keyword + '%'"/>
+                AND (
+                `name` LIKE #{pattern}
+                )
+            </if>
+        </where>
+    </select>
+
+
+    <select id="findById" parameterType="String" resultType="com.ttit.soft.api.entity.SoftInfo">
+        <include refid="baseCols"/>
+        WHERE id = #{id}
+    </select>
+
+    <update id="del" parameterType="String">
+        UPDATE soft_info
+        SET is_del = 1
+        WHERE id = #{id}
+    </update>
+
+    <insert id="add" parameterType="com.ttit.soft.api.entity.SoftInfo">
+        INSERT INTO soft_info(id,
+                              dict_soft_type,
+                              `name`,
+                              url,
+                              is_del)
+        VALUES (#{id},
+                #{softType},
+                #{name},
+                #{url},
+                #{isDel})
+    </insert>
+</mapper>

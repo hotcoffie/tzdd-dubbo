@@ -24,8 +24,6 @@ public class Constant {
      */
     public static final String USER_ID_ADMIN = "1";
 
-    public static final String DOWNLOAD_PATH = "/sys/atta/download/";
-
     /**
      * 业务异常提示语，必填项校验提示
      */
