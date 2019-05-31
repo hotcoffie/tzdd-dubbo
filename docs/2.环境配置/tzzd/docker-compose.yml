@@ -62,8 +62,6 @@ services:
       - zookeeper
     ports:
       - 9103:9103
-    volumes:
-      - ./device-provider/data:/opt/tzzd/data
     networks:
       tzzd-network:
     restart: always
@@ -117,6 +115,8 @@ services:
       - soft-manage-provider
     ports:
       - 9102:9102
+    volumes:
+      - ./soft-manage-web/data:/opt/tzzd/data
     networks:
       tzzd-network:
     restart: always
