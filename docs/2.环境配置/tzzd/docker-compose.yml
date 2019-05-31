@@ -1,0 +1,127 @@
+version: '3'
+services:
+  mysql:
+    image: 'mysql/mysql-server:5.7'
+#    container_name: tzzd-db
+    networks:
+      tzzd-network:
+    ports:
+      - '3306:3306'
+    #设置utf8字符集
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/init:/docker-entrypoint-initdb.d/
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root123"
+      - "MYSQL_ROOT_HOST=%"
+      - "MYSQL_DATABASE=tzzd"
+    restart: always
+  redis:
+    image: 'redis:latest'
+    networks:
+      tzzd-network:
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redis/data:/data
+      - ./redis/conf/redis.conf:/etc/redis/redis.conf
+    restart: always
+  zookeeper:
+    image: zookeeper:3.4
+    ports:
+      - 2181:2181
+    networks:
+      tzzd-network:
+    restart: always
+  dubbo-admin:
+    build:
+      context: ./dubbo-admin/
+      dockerfile: Dockerfile
+    links:
+      - zookeeper:zookeeper
+    depends_on:
+      - zookeeper
+    ports:
+      - 7001:7001
+    networks:
+      tzzd-network:
+    restart: always
+  device-provider:
+    build:
+      context: ./device-provider/
+      dockerfile: Dockerfile
+    links:
+      - mysql:mysql
+      - redis:redis
+      - zookeeper:zookeeper
+    depends_on:
+      - mysql
+      - redis
+      - zookeeper
+    ports:
+      - 9103:9103
+    volumes:
+      - ./device-provider/data:/opt/tzzd/data
+    networks:
+      tzzd-network:
+    restart: always
+  device-web:
+    build:
+      context: ./device-web/
+      dockerfile: Dockerfile
+    links:
+      - mysql:mysql
+      - redis:redis
+      - zookeeper:zookeeper
+    depends_on:
+      - mysql
+      - redis
+      - zookeeper
+      - device-provider
+    ports:
+      - 9104:9104
+    networks:
+      tzzd-network:
+    restart: always
+  soft-manage-provider:
+    build:
+      context: ./soft-manage-provider/
+      dockerfile: Dockerfile
+    links:
+      - mysql:mysql
+      - redis:redis
+      - zookeeper:zookeeper
+    depends_on:
+      - mysql
+      - redis
+      - zookeeper
+    ports:
+      - 9101:9101
+    networks:
+      tzzd-network:
+    restart: always
+  soft-manage-web:
+    build:
+      context: ./soft-manage-web/
+      dockerfile: Dockerfile
+    links:
+      - mysql:mysql
+      - redis:redis
+      - zookeeper:zookeeper
+    depends_on:
+      - mysql
+      - redis
+      - zookeeper
+      - soft-manage-provider
+    ports:
+      - 9102:9102
+    networks:
+      tzzd-network:
+    restart: always
+networks:
+  tzzd-network:
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16

@@ -31,14 +31,21 @@ public class FileUploadUtils {
         String attaId = UuidUtils.generate();
         File dir = new File(fileUploadPath);
         if (!dir.exists()) {
-            dir.mkdir();
+            dir.mkdirs();
         }
         File localFile = new File(dir, attaId);
-
+//        try {
+//            localFile.createNewFile();
+//        } catch (IOException e) {
+//            log.error("附件上传失败！", e);
+//            throw new BusinessException("附件上传失败！");
+//        }
         try (
                 InputStream in = webFile.getInputStream();
                 FileOutputStream out = new FileOutputStream(localFile)
         ) {
+
+            localFile.createNewFile();
             FileCopyUtils.copy(in, out);
         } catch (IOException e) {
             log.error("附件上传失败！", e);
